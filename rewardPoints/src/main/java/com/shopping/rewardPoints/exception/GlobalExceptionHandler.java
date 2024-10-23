@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorDetails> myExpHandlerMain(Exception ie, WebRequest wr)  {
+    public ResponseEntity<ErrorDetails> myExpHandlerMain(Exception ie, WebRequest wr) {
         ErrorDetails err = new ErrorDetails(LocalDateTime.now(), ie.getMessage(), wr.getDescription(false));
         return new ResponseEntity<ErrorDetails>(err, HttpStatus.BAD_REQUEST);
     }

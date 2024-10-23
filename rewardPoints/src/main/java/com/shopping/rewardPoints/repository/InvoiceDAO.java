@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface InvoiceDAO extends MongoRepository<Invoice, String> {
 
-//    List<Invoice> getByInvoiceDateGreaterThanEqualToAndInvoiceDateLessThanEqualTo(LocalDate from, LocalDate to);
+    List<Invoice> getByInvoiceDateBetween(LocalDate from, LocalDate to);
 }

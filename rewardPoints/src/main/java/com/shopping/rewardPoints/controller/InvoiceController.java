@@ -20,8 +20,8 @@ public class InvoiceController {
     private InvoiceService invoiceService;
 
     @PostMapping("")
-    public ResponseEntity<String>saveInvoicesHandler(@RequestBody List<Invoice> invoices) {
-        invoiceService.saveInvoices(invoices);
-        return new ResponseEntity("Invoice saved successfully", HttpStatus.OK);
+    public ResponseEntity<List<Invoice>> saveInvoicesHandler(@RequestBody List<Invoice> invoices) {
+        List<Invoice> invoiceList = invoiceService.saveInvoices(invoices);
+        return new ResponseEntity(invoiceList, HttpStatus.CREATED);
     }
 }

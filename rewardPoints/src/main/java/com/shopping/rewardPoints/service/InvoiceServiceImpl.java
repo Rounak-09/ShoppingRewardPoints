@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class InvoiceServiceImpl implements InvoiceService{
+public class InvoiceServiceImpl implements InvoiceService {
 
     @Autowired
     private InvoiceDAO invoiceDAO;
 
     @Override
-    public void saveInvoices(List<Invoice> invoices) {
-        if (invoices==null || invoices.isEmpty()) throw new UserException("No invoice provided");
-        invoiceDAO.saveAll(invoices);
+    public List<Invoice> saveInvoices(List<Invoice> invoices) {
+        if (invoices == null || invoices.isEmpty()) throw new UserException("Please provide invoice details!");
+        return invoiceDAO.saveAll(invoices);
     }
 }

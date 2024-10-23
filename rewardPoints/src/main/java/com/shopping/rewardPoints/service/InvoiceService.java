@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface InvoiceService {
 
-    void saveInvoices(List<Invoice> invoices);
+    List<Invoice> saveInvoices(List<Invoice> invoices);
 }
