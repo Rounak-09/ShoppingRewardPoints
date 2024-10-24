@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/shopping/rewards")
+@RequestMapping("/shopping")
 public class RewardController {
 
     @Autowired
     private RewardService rewardService;
 
-    @GetMapping("")
+    @GetMapping("/rewards")
     public ResponseEntity<List<CustomerRewardPoints>> getCustomerRewardPointsHandler(@RequestParam(required = false) String from, @RequestParam(required = false) String to) {
         List<CustomerRewardPoints> customerRewardPoints = rewardService.getCustomerRewardPoints(from, to);
         return new ResponseEntity<>(customerRewardPoints, HttpStatus.OK);

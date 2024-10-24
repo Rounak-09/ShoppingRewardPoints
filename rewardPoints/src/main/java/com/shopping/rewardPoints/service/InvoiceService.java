@@ -6,5 +6,13 @@ import java.util.List;
 
 public interface InvoiceService {
 
-    List<Invoice> saveInvoices(List<Invoice> invoices);
+    Invoice saveInvoice(Invoice invoice);
+
+    List<Invoice> getAllInvoices();
+
+    Invoice getInvoiceByInvoiceNumber(String invoiceNumber);
+
+    Invoice updateInvoice(Invoice invoice);
+
+    void deleteInvoiceByInvoiceNumber(String invoiceNumber);
 }

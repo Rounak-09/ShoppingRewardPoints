@@ -4,20 +4,43 @@ import com.shopping.rewardPoints.model.Customer;
 import com.shopping.rewardPoints.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/shopping/customer")
+@RequestMapping("/shopping")
 public class CustomerController {
 
     private CustomerService customerService;
 
-    public ResponseEntity<List<Customer>> saveCustomerHandler(@RequestBody List<Customer> customers) {
-        List<Customer> customerList = customerService.saveCustomers(customers);
-        return new ResponseEntity<>(customerList, HttpStatus.CREATED);
+    @PostMapping("/customers")
+    public ResponseEntity<Customer> saveCustomerHandler(@RequestBody Customer customer) {
+        Customer response = customerService.saveCustomer(customer);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/customers")
+    public ResponseEntity<List<Customer>> getAllCustomersHandler() {
+        List<Customer> customerList = customerService.getAllCustomers();
+        return new ResponseEntity<>(customerList, HttpStatus.OK);
+    }
+
+    @GetMapping("/customers/{customerId}")
+    public ResponseEntity<Customer> getCustomerByIdHandler(@PathVariable String customerId) {
+        Customer customer = customerService.getCustomerById(customerId);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
+    }
+
+    @PutMapping("/customers")
+    public ResponseEntity<Customer> updateCustomerHandler(@RequestBody Customer customer) {
+        Customer response = customerService.updateCustomer(customer);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/customers/{customerId}")
+    public ResponseEntity<String> deleteCustomerByIdHandler(@PathVariable String customerId) {
+        customerService.deleteCustomerById(customerId);
+        return new ResponseEntity<>("Customers deleted successfully", HttpStatus.OK);
     }
 }

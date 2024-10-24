@@ -4,7 +4,6 @@ import com.shopping.rewardPoints.dto.CustomerRewardPoints;
 import com.shopping.rewardPoints.dto.MonthlyRewardPoints;
 import com.shopping.rewardPoints.model.Customer;
 import com.shopping.rewardPoints.model.Invoice;
-import com.shopping.rewardPoints.utility.Validator;
 import org.springframework.stereotype.Component;
 
 import java.time.Month;
@@ -35,7 +34,6 @@ public class RewardCalculator {
     private Map<Customer, Map<Month, Integer>> getCustomerRewardPointsMap(List<Invoice> invoices) {
         Map<Customer, Map<Month, Integer>> customerWiseRewardPoints = new HashMap<>();
         for (Invoice invoice : invoices) {
-            Validator.checkIfValidPurchaseRecord(invoice);
             Customer customer = new Customer(invoice.getCustomerId(), invoice.getCustomerName());
             Month month = invoice.getInvoiceDate().getMonth();
             int rewardPoints = calculateRewardPoints(invoice.getInvoiceAmount());

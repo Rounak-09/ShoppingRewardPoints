@@ -3,7 +3,6 @@ package com.shopping.rewardPoints.utility;
 import com.shopping.rewardPoints.exception.UserException;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public final class Converter {
