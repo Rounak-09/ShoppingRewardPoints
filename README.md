@@ -1,5 +1,27 @@
 # ShoppingRewardPoints
 <p>A springboot project to calculate the reward points for customers for a given date range using the transactions.</p>
+
+<h2>Services:</h2>
+
+- User can create, read, update and delete customers.
+
+- User can create, read, update and delete invoices.
+
+- The amount is auto calculated by multiplying rate and quantity of the item.
+
+- User can view the reward points per customer per month and total of any desired date range.
+
+
+<h2>Technology Stack:</h2>
+
+- Java
+
+- Spring Boot
+
+- MongoDB
+
+- Swagger
+- Lombok
 <h2>API Endpoints</h2>
 <img width="732" alt="image" src="https://github.com/user-attachments/assets/196bc25f-603f-42b0-a4ae-1355ef7233b5">
 
