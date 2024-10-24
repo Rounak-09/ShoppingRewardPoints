@@ -2,6 +2,7 @@ package com.shopping.rewardPoints.controller;
 
 import com.shopping.rewardPoints.model.Customer;
 import com.shopping.rewardPoints.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("/shopping")
 public class CustomerController {
 
+    @Autowired
     private CustomerService customerService;
 
     @PostMapping("/customers")

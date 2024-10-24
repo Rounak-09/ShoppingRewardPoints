@@ -15,25 +15,25 @@ public final class Validator {
 
     private static void checkIfValidCustomerId(String customerId) {
         if (customerId == null || customerId.trim().equals("")) {
-            throw new UserException("Invalid customerId entered!");
+            throw new UserException("Please enter a valid customerId!");
         }
     }
 
     private static void checkIfValidCustomerName(String customerName) {
         if (customerName == null || customerName.trim().equals("")) {
-            throw new UserException("Invalid customer name entered!");
+            throw new UserException("Please enter a valid customer name!");
         }
     }
 
     private static void checkIfValidAddress(String address) {
         if (address == null || address.trim().equals("")) {
-            throw new UserException("Invalid customer address entered!");
+            throw new UserException("Please enter a valid address!");
         }
     }
 
     private static void checkIfValidPhoneNumber(String phone) {
         if (phone == null || phone.trim().equals("")) {
-            throw new UserException("Invalid phone number entered!");
+            throw new UserException("Please enter a valid phone number!");
         }
     }
 
@@ -57,37 +57,37 @@ public final class Validator {
 
     private static void checkIfValidInvoiceNumber(String invoiceNumber) {
         if (invoiceNumber == null || invoiceNumber.trim().equals("")) {
-            throw new UserException("Invalid invoice number entered!");
+            throw new UserException("Please enter a valid invoice number!");
         }
     }
 
     private static void checkIfValidMonth(LocalDate date) {
         if (date == null || date.getMonth() == null) {
-            throw new UserException("Invalid date entered!");
+            throw new UserException("Please enter a valid date!");
         }
     }
 
     private static void checkIfValidItemNumber(String itemNumber) {
         if (itemNumber == null || itemNumber.trim().equals("")) {
-            throw new UserException("Invalid item number entered!");
+            throw new UserException("Please enter a valid item number!");
         }
     }
 
     private static void checkIfValidItemName(String itemName) {
         if (itemName == null || itemName.trim().equals("")) {
-            throw new UserException("Invalid item name entered!");
+            throw new UserException("Please enter a valid item name!");
         }
     }
 
     private static void checkIfValidQuantity(Integer quantity) {
         if (quantity == null || quantity <= 0) {
-            throw new UserException("Invalid quantity entered!");
+            throw new UserException("Please enter a valid quantity!");
         }
     }
 
     private static void checkIfValidRate(Double rate) {
         if (rate == null || rate <= 0) {
-            throw new UserException("Invalid rate entered!");
+            throw new UserException("Please enter a valid rate!");
         }
     }
 

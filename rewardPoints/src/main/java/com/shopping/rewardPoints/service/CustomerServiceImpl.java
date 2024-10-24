@@ -25,22 +25,22 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomerById(String customerId) {
         if (customerId==null || customerId.trim().isEmpty()) {
-            throw new UserException("Please provide customer details!");
+            throw new UserException("Please provide customer details!"); // Handling edge cases by throwing exception if customerId is not provided
         }
 
         if (customerDAO.existsById(customerId)) {
             customerDAO.deleteById(customerId);
         } else {
-            throw new UserException("Customer not found!");
+            throw new UserException("Customer not found with customerId: "+customerId); // Check if customerId provided is valid then proceed or else throw exception
         }
     }
 
     @Override
     public Customer saveCustomer(Customer customer) {
-        Validator.validateCustomer(customer);
+        Validator.validateCustomer(customer); // Validate the data before adding it to the database
 
         if (customerDAO.existsById(customer.getCustomerId())) {
-            throw new UserException("CustomerId is already present!");
+            throw new UserException("Customer is already present with customerId: "+customer.getCustomerId()); // Check if customerId already exists to prevent overwriting
         }
         return customerDAO.save(customer);
     }
@@ -48,25 +48,25 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getCustomerById(String customerId) {
         if (customerId==null || customerId.trim().isEmpty()) {
-            throw new UserException("Please provide customerId!");
+            throw new UserException("Please provide customerId!"); // Handling edge cases by throwing exception if customerId is not provided
         }
 
         Optional<Customer> optionalCustomer = customerDAO.findById(customerId);
         if (optionalCustomer.isPresent()) {
             return optionalCustomer.get();
         } else {
-            throw new UserException("Customer not found!");
+            throw new UserException("Customer not found with customerId: "+customerId); // Get data if customerId is present or else throw exception
         }
     }
 
     @Override
     public Customer updateCustomer(Customer customer) {
-        Validator.validateCustomer(customer);
+        Validator.validateCustomer(customer); // Validate the data before adding it to the database
 
         if (customerDAO.existsById(customer.getCustomerId())) {
             return customerDAO.save(customer);
         }
-        throw new UserException("Customer not found!");
+        throw new UserException("Customer not found with customerId: "+customer.getCustomerId()); // Update data if customerId exists or else throw exception
     }
 
 }

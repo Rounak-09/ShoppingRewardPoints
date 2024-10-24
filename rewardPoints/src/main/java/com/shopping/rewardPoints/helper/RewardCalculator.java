@@ -23,10 +23,10 @@ public class RewardCalculator {
 
         int points = 0;
         if (amount > 50) {
-            points += Math.min(amount.intValue() - 50, 50);
+            points += Math.min(amount.intValue() - 50, 50); // Add 1 point for every dollar spent between $50 and $100 in each transaction
         }
         if (amount > 100) {
-            points += (amount.intValue() - 100) * 2;
+            points += (amount.intValue() - 100) * 2; // Add 2 points for every dollar spent over $100 in each transaction
         }
         return points;
     }
@@ -37,7 +37,7 @@ public class RewardCalculator {
             Customer customer = new Customer(invoice.getCustomerId(), invoice.getCustomerName());
             Month month = invoice.getInvoiceDate().getMonth();
             int rewardPoints = calculateRewardPoints(invoice.getInvoiceAmount());
-            customerWiseRewardPoints.computeIfAbsent(customer, k -> new HashMap<>()).merge(month, rewardPoints, Integer::sum);
+            customerWiseRewardPoints.computeIfAbsent(customer, k -> new HashMap<>()).merge(month, rewardPoints, Integer::sum); // calculate the reward points earned for each customer per month
         }
         return customerWiseRewardPoints;
     }
@@ -53,7 +53,7 @@ public class RewardCalculator {
                     .map(monthEntry -> new MonthlyRewardPoints(monthEntry.getKey(), monthEntry.getValue()))
                     .collect(Collectors.toList());
 
-            int totalRewardPoints = monthlyRewardPointsList.stream().mapToInt(MonthlyRewardPoints::getRewardPoints).sum();
+            int totalRewardPoints = monthlyRewardPointsList.stream().mapToInt(MonthlyRewardPoints::getRewardPoints).sum(); // calculate the reward points earned for each customer per month and total
 
             customerRewardPoints.setMonthlyRewardPointsList(monthlyRewardPointsList);
             customerRewardPoints.setTotalRewardPoints(totalRewardPoints);

@@ -99,6 +99,8 @@ class RewardPointsApplicationTests {
                         new Item("002", "Chocolate", 2, 50.0, 100.0))
                         .collect(Collectors.toList()), 120.00);
 
+        when(customerDAO.existsById(invoice.getCustomerId())).thenReturn(true);
+        when(invoiceDAO.existsById(invoice.getInvoiceNumber())).thenReturn(false);
         when(invoiceDAO.save(invoice)).thenReturn(invoice);
         assertEquals(invoice, invoiceService.saveInvoice(invoice));
     }
